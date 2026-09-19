@@ -5,12 +5,14 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController: MonoBehaviour
 {
     Rigidbody2D rb2d;
     float speed = 5f;
     Vector2 direction;
-
+    [SerializeField]
+    [Range(0.5f, 2f)]
+    float speedy;
 
     void Start()
     {

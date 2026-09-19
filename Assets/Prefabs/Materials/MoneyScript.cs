@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using System.Timers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -82,6 +85,10 @@ public class MoneyScript : MonoBehaviour
             if (_timeLeft <= 0f)
             {
                 EndGame();
+                float Count = 3;
+                Count -= Time.unscaledDeltaTime;
+                if (Count < 0) { Application.Quit(); Debug.Log("avav"); }
+
             }
         }
     }
@@ -109,8 +116,8 @@ public class MoneyScript : MonoBehaviour
     {
         Vector2 min = _cam.ViewportToWorldPoint(new Vector2(0.1f, 0.2f));
         Vector2 max = _cam.ViewportToWorldPoint(new Vector2(0.9f, 0.8f));
-        float x = Random.Range(min.x, max.x);
-        float y = Random.Range(min.y, max.y);
+        float x = UnityEngine.Random.Range(min.x, max.x);
+        float y = UnityEngine.Random.Range(min.y, max.y);
         transform.position = new Vector2(x, y);
     }
 
@@ -137,5 +144,7 @@ public class MoneyScript : MonoBehaviour
         trt.anchoredPosition = Vector2.zero;
 
         Time.timeScale = 0f;
+        
+        
     }
 }
